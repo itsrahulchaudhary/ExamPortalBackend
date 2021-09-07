@@ -25,11 +25,14 @@ public class Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		/*
 		 System.out.println("Code started...");
 		 User user = new User();
 		 user.setFirstname("Raju");
 		 user.setLastname("Kumar");
 		 user.setUsername("raju101");
+		 user.setPassword("raju123");
+		 user.setPhone("9998887771");
 		 user.setEmail("raju101@gmail.com");
 		 user.setProfile("default.png");
 		 
@@ -44,9 +47,10 @@ public class Application implements CommandLineRunner{
 		 
 		 userRoleSet.add(userRole);
 		 
-		 this.userService.createUser(user, userRoleSet);
+		 User createUser = this.userService.createUser(user, userRoleSet);
+		 System.out.println(createUser.getUsername());
 		 
-		
+		*/
 	}
 
 }
