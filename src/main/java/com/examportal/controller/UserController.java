@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.examportal.service.UserService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
 	@Autowired
@@ -31,6 +33,7 @@ public class UserController {
 		Role role = new Role();
 		role.setRoleId(20L);
 		role.setRoleName("NORMAL");
+		user.setProfile("default.png");
 
 		UserRole userRole = new UserRole();
 		userRole.setRole(role);
