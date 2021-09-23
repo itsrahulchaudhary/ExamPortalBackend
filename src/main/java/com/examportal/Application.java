@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.examportal.model.Role;
 import com.examportal.model.User;
@@ -18,6 +19,9 @@ public class Application implements CommandLineRunner{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -25,15 +29,15 @@ public class Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
+ 
 		 System.out.println("Code started...");
 		 User user = new User();
-		 user.setFirstname("Raju");
+		 user.setFirstname("Ajay");
 		 user.setLastname("Kumar");
-		 user.setUsername("raju101");
-		 user.setPassword("raju123");
+		 user.setUsername("admin");
+		 user.setPassword(this.bCryptPasswordEncoder.encode("admin123"));
 		 user.setPhone("9998887771");
-		 user.setEmail("raju101@gmail.com");
+		 user.setEmail("ajay@gmail.com");
 		 user.setProfile("default.png");
 		 
 		 Role role = new Role();
@@ -50,7 +54,7 @@ public class Application implements CommandLineRunner{
 		 User createUser = this.userService.createUser(user, userRoleSet);
 		 System.out.println(createUser.getUsername());
 		 
-		*/
+	 
 	}
 
 }

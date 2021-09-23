@@ -130,9 +130,15 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		 
 		Set<Authority> set =new HashSet<>();
-		this.userRoles.forEach(userRole ->{
+//		this.userRoles.forEach(userRole ->{
+//			//set.add(new Authority(userRole.getRole().getRoleName()));
+//			set.add(new Authority(userRole.getUser().getProfile()));
+//			System.out.println(userRole.getUser().getProfile());
+//
+//		});
+		for(UserRole userRole : userRoles) {
 			set.add(new Authority(userRole.getRole().getRoleName()));
-		});
+		}
 		
 		return set;
 	}
