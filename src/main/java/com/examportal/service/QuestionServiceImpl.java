@@ -44,10 +44,11 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Override
 	public void deleteQuestion(Long questionId) {
-		Question question = new Question();
-		question.setQuesId(questionId);
-		this.questionRepository.save(question);
-		
+		 Question question = new Question();
+		 question.setQuesId(questionId);
+		 this.questionRepository.save(question);
+		//this.questionRepository.deleteById(questionId);
+		 
 	}
 
 }

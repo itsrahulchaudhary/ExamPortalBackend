@@ -2,6 +2,7 @@ package com.examportal.model.exam;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="ques_id")
 	private Long quesId;
 	@Column(length = 5000)
 	private String content;
@@ -25,7 +27,8 @@ public class Question {
 	private String option4;
 	private String answer;
 
-	@ManyToOne
+	// @ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne 
 	private Quiz quiz;
 
 	public Long getQuesId() {

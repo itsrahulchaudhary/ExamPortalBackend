@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examportal.model.exam.Question;
 import com.examportal.model.exam.Quiz;
+import com.examportal.repository.QuestionRepository;
 import com.examportal.service.QuestionService;
 import com.examportal.service.QuizService;
 
@@ -27,6 +28,9 @@ import com.examportal.service.QuizService;
 @RequestMapping("/question")
 @CrossOrigin("*")
 public class QuestionController {
+	
+	@Autowired
+	QuestionRepository questionRepository;
 
 	@Autowired
 	QuestionService questionService;
@@ -62,6 +66,15 @@ public class QuestionController {
 		return ResponseEntity.ok(list);
 	}
 
+	// get All Question of any quizId
+		@GetMapping("/quiz/all/{quizId}")
+		public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("quizId") Long quizId) {
+			Quiz quiz = new Quiz();
+			quiz.setQid(quizId);
+			Set<Question> questionOfQuiz = this.questionService.getQuestionOfQuiz(quiz);
+			return ResponseEntity.ok(questionOfQuiz);
+		}
+		
 	// get All Question
 	@GetMapping("/")
 	public ResponseEntity<?> getQuestions() {
@@ -79,6 +92,8 @@ public class QuestionController {
 	@DeleteMapping("/{questionId}")
 	public void deleteCategory(@PathVariable("questionId") Long questionId) {
 		this.questionService.deleteQuestion(questionId);
+		//this.questionRepository.deleteById(questionId);
+
 	}
 
 }
